@@ -1,6 +1,6 @@
-const Item = () => {
+const Item = ({ task }) => {
     return (
-    <div>Hello item</div>
+    <p>{task}</p>
     );
 }
 
