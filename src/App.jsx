@@ -33,7 +33,7 @@ function App() {
   return (
     <div className="App">
       <h1>To Do List</h1>
-      {tasks.map(element => <Item task={element.task} />)}
+      {tasks.map(element => <Item task={element.item} />)}
       <Form />
     </div>
   );
