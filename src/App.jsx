@@ -34,10 +34,29 @@ function App() {
     setTasks([...tasks, {id: (tasks.length + 1), item: value, isDone: false }]);
   }
 
+  const handleDeleteTask = (id) => {
+    const updatedTasks = tasks.filter(task => task.id !== id);
+
+    setTasks(updatedTasks);
+  }
+
+  const handleIsDone = (id) => {
+    const foundTask = (tasks.find(task => task.id === id));
+    foundTask.isDone = !foundTask.isDone;
+  }
+
   return (
     <div className="App">
       <h1>To Do List</h1>
-      {tasks.map(element => <Item task={element.item} />)}
+      {tasks.map(element => 
+        <Item 
+          key={element.id} 
+          task={element.item} 
+          id={element.id} 
+          handleDeleteTask={handleDeleteTask} 
+          handleIsDone={handleIsDone} 
+          isDone={element.isDone}
+        />)}
       <Form handleAddTask={handleAddTask} />
     </div>
   );

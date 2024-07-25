@@ -1,6 +1,10 @@
-const Item = ({ task }) => {
+const Item = ({ task, id, handleDeleteTask, handleIsDone, isDone }) => {
     return (
-    <p>{task}</p>
+        <div>
+            <button onClick={() => handleIsDone(id)}>🔲</button>
+            {task}
+            <button onClick={() => handleDeleteTask(id)}>🗑️</button>
+        </div>
     );
 }
 
