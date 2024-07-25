@@ -1,8 +1,20 @@
-const Form = () => {
+import { useState } from 'react';
+
+const Form = ({ handleAddTask }) => {
+
+    const [value, setValue] = useState('');
+
     return (
-    <form>
-        <input type='text' id='task-id' name='task' onChange={event => console.log(event.target.value)}></input>
-        <input type='submit' value='Add Task'></input>
+    <form onSubmit={(event) => event.preventDefault()}>
+        <input type='text' id='task-id' name='task' onChange={event => setValue(event.target.value)} value={value}></input>
+        <input 
+            type='submit' 
+            value='Add Task' 
+            onClick={() => {
+                handleAddTask(value)
+                setValue('')
+            }}>
+        </input>
     </form>
     );
 }

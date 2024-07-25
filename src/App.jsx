@@ -30,11 +30,15 @@ function App() {
 
   const [tasks, setTasks] = useState(items);
 
+  const handleAddTask = (value) => {
+    setTasks([...tasks, {id: (tasks.length + 1), item: value, isDone: false }]);
+  }
+
   return (
     <div className="App">
       <h1>To Do List</h1>
       {tasks.map(element => <Item task={element.item} />)}
-      <Form />
+      <Form handleAddTask={handleAddTask} />
     </div>
   );
 }
