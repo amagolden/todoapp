@@ -1,7 +1,9 @@
 import { useState } from 'react';
 import './App.css';
-import Form from './components/Form';
+import TaskForm from './components/Form';
 import Item from './components/Item';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 let items = [
   {
@@ -12,12 +14,12 @@ let items = [
   {
     id: 2,
     item: 'order groceries',
-    isDone: true
+    isDone: false
   },
   {
     id: 3,
     item: 'wash the dishes',
-    isDone: true
+    isDone: false
   },
   {
     id: 4,
@@ -43,6 +45,9 @@ function App() {
   const handleIsDone = (id) => {
     const foundTask = (tasks.find(task => task.id === id));
     foundTask.isDone = !foundTask.isDone;
+
+    const newTasks = tasks.map(task => (task.id === id) ? foundTask : task);
+    setTasks(newTasks);
   }
 
   return (
@@ -57,7 +62,7 @@ function App() {
           handleIsDone={handleIsDone} 
           isDone={element.isDone}
         />)}
-      <Form handleAddTask={handleAddTask} />
+      <TaskForm handleAddTask={handleAddTask} />
     </div>
   );
 }

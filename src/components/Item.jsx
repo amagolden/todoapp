@@ -1,9 +1,9 @@
 const Item = ({ task, id, handleDeleteTask, handleIsDone, isDone }) => {
     return (
         <div>
-            <button onClick={() => handleIsDone(id)}>🔲</button>
-            {task}
-            <button onClick={() => handleDeleteTask(id)}>🗑️</button>
+            <button className='emoji' onClick={() => handleIsDone(id)}>{ isDone ? '✅' : '🔲'}</button>
+            <span className={ isDone ? 'complete' : 'incomplete'}>{task}</span>
+            <button className='emoji trash-icon' onClick={() => handleDeleteTask(id)}>🗑️</button>
         </div>
     );
 }
