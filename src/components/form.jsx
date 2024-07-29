@@ -19,7 +19,7 @@ const TaskForm = ({ handleAddTask }) => {
         </Form.Group>
         <button 
             className='form-button btn btn-info'
-            type='button' 
+            type='submit' 
             value='Add Task' 
             onClick={() => {
                 handleAddTask(value)

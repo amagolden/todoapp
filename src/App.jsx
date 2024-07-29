@@ -4,7 +4,6 @@ import TaskForm from './components/Form';
 import Item from './components/Item';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-
 let items = [
   {
     id: 1,
