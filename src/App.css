@@ -1,6 +1,6 @@
 .App {
   text-align: left;
-  width: 250px;
+  width: 280px;
   margin: auto;
 }
 
@@ -14,7 +14,7 @@
   text-decoration: line-through;
 }
 
-.trash-icon {
+.wrapper {
   float: right;
 }
 
