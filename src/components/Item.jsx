@@ -4,30 +4,32 @@ import { useState } from 'react';
 
 const Item = ({ task, id, handleDeleteTask, handleIsDone, isDone, handleEditTask, isEdit, handleUpdateTask }) => {
     
-    const [value, setValue] = useState('');
+    const [value, setValue] = useState(task);
     
     return (
         <div>
             <button className='emoji' onClick={() => handleIsDone(id)}>{ isDone ? <BsCheckSquareFill /> : <BsSquare />}</button>
             <span className={ isDone ? 'complete' : 'incomplete'}>
                 { isEdit? 
+                    <form onSubmit={(event) => {
+                        event.preventDefault()
+                        handleUpdateTask(value, id)
+                    }}>
                         <input 
                             type='text' 
                             id='edit-task' 
                             name='edit-task' 
-                            defaultValue={task}
+                            value={value}
                             onChange={(event) => setValue(event.target.value)}
-                             />
+                        />
+                    </form>
                     : task }
             </span>
             <div className='wrapper'>
                 <button 
                     className='emoji edit-icon' 
                     onClick={ isEdit ? 
-                        () => {
-                            handleUpdateTask(value, id)
-                            handleEditTask(id)
-                        } 
+                        () => handleUpdateTask(value, id)
                         : () => handleEditTask(id)
                     }>
                     <MdEdit />

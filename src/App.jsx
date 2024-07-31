@@ -67,6 +67,7 @@ function App() {
 
     const newTasks = tasks.map(task => (task.id === id) ? foundTask : task);
     setTasks(newTasks);
+    handleEditTask(id);
   }
 
   return (
