@@ -7,24 +7,22 @@ const Item = ({ task, id, handleDeleteTask, handleIsDone, isDone, handleEditTask
     const [value, setValue] = useState(task);
     
     return (
-        <div>
+        <div className='item-line'>
             <button className='emoji' onClick={() => handleIsDone(id)}>{ isDone ? <BsCheckSquareFill /> : <BsSquare />}</button>
-            <span className={ isDone ? 'complete' : 'incomplete'}>
-                { isEdit? 
-                    <form onSubmit={(event) => {
-                        event.preventDefault()
-                        handleUpdateTask(value, id)
-                    }}>
-                        <input 
-                            type='text' 
-                            id='edit-task' 
-                            name='edit-task' 
-                            value={value}
-                            onChange={(event) => setValue(event.target.value)}
-                        />
-                    </form>
-                    : task }
-            </span>
+            { isEdit ? 
+                <input 
+                    type='text' 
+                    id='edit-task' 
+                    name='edit-task' 
+                    value={value}
+                    onChange={(event) => setValue(event.target.value)}
+                    onKeyDown={(event) => {
+                        if (event.key === 'Enter') {
+                            event.preventDefault();
+                            handleUpdateTask(value, id);
+                        }}}
+                />
+                : <span className={ isDone ? 'complete' : 'incomplete'}>{task}</span> }
             <div className='wrapper'>
                 <button 
                     className='emoji edit-icon' 
